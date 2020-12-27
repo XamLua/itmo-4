@@ -1,0 +1,2 @@
+EXTRN paint :PROC
+EXTRN paint2 :PROC

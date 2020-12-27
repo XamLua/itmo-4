@@ -1,0 +1,26 @@
+
+ Start  Stop   Length Name                   Class
+ 00000H 001E7H 001E8H _TEXT                  CODE
+ 001E8H 00203H 0001CH _DATA                  DATA
+ 00210H 0320FH 03000H STACK                  STACK
+
+ Origin   Group
+ 001E:0   DGROUP
+
+  Address         Publics by Name
+
+
+  Address         Publics by Value
+
+
+Unresolved externals:
+
+
+DRAW_LINE in file(s):
+ TEST.OBJ(test.asm)
+CALC_OFFSET in file(s):
+ DLINE.OBJ(dline.asm) TEST.OBJ(test.asm)
+READ_NUMBER in file(s):
+ DLINE.OBJ(dline.asm) TEST.OBJ(test.asm)
+PRINT_AL in file(s):
+ DLINE.OBJ(dline.asm) TEST.OBJ(test.asm)
