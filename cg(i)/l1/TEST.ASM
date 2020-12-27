@@ -75,11 +75,9 @@ _mode_chooser:
 
 	call clear_screen
 	xor AX, AX
-	;call set_offst
-	;call mode_choose_message
-	;call read_number
-
-	mov AX, 8
+	call set_offst
+	call mode_choose_message
+	call read_number
 
 	cmp AX, 0
 	je _good_end
@@ -339,7 +337,6 @@ _mode_6:
 
 	call draw_line_message_x
 	call read_number
-	;mov EAX, 320
 	push EAX
 
 	mov AX, 2560
@@ -347,7 +344,6 @@ _mode_6:
 
 	call draw_line_message_y
 	call read_number
-	;mov EAX, 175
 	push EAX
 
 	mov AX, 3840
@@ -355,7 +351,6 @@ _mode_6:
 
 	call draw_line_message_r
 	call read_number
-	;mov EAX, 100
 	push EAX
 
 	mov AX, 5120
@@ -363,7 +358,6 @@ _mode_6:
 
 	call draw_line_message_md
 	call read_number
-	;mov EAX, 255
 	push EAX
 
 	mov DX, 3C4h 		; указатель на адресsный регистр
@@ -419,9 +413,6 @@ _mode_7:
  	inc DX
  	mov AL, 0FFh
  	out DX, AL 			; set bit mask
-
-	;xor AX, AX
-	;int 16h
 
 	mov EAX, 50
 	push EAX
@@ -570,29 +561,6 @@ _mode_8:
 	call draw_kx_line
 	add ESP, 16
 
-; t h
-	mov EAX, 213
-	push EAX
-	mov EAX, 82
-	push EAX
-	mov EAX, 46
-	push EAX
-
-	;call draw_horizontal_line
-	add ESP, 12
-
-; b h
-
-	mov EAX, 182
-	push EAX
-	mov EAX, 250
-	push EAX
-	mov EAX, 46
-	push EAX
-
-	;call draw_horizontal_line
-	add ESP, 12
-
 ; v r
 	mov EAX, 411
 	push EAX
@@ -634,29 +602,6 @@ _mode_8:
 
 	call draw_kx_line
 	add ESP, 16
-
-; t h
-	mov EAX, 365
-	push EAX
-	mov EAX, 83
-	push EAX
-	mov EAX, 46
-	push EAX
-
-	;call draw_horizontal_line
-	add ESP, 12
-
-; b h
-
-	mov EAX, 334
-	push EAX
-	mov EAX, 251
-	push EAX
-	mov EAX, 46
-	push EAX
-
-	;call draw_horizontal_line
-	add ESP, 12
 
 ; t m
 
@@ -859,7 +804,7 @@ _mode_8:
 	xor AX, AX			; 00 - wait until next button press
 	int 16h				; interupt 16h
 
-	jmp _good_end
+	jmp _mode_chooser
 
 _bad_end:
 
