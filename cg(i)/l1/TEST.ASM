@@ -103,9 +103,6 @@ _mode_chooser:
 	cmp AX, 7
 	je _mode_7
 
-	cmp AX, 8
-	je _mode_8
-
 	jmp _good_end
 
 _mode_1:
@@ -383,125 +380,6 @@ _mode_6:
 	jmp _mode_chooser
 
 _mode_7:
-
-	mov DX, 3C4h 		; указатель на адресsный регистр
- 	mov AL, 2 			; индекс регистра маски цвета
- 	out DX, AL 			; устанавливаем адрес регистра маски
- 	inc DX 				; адрес регистра данных
- 	mov AL, 0Fh 		; код цвета (белый)
- 	out DX, AL 			; посылаем код цвета в контроллер
-
- 	mov DX, 3CEh
-	mov AL, 8
- 	out DX, AL
- 	inc DX
- 	mov AL, 0FFh
- 	out DX, AL 			; set bit mask
-
-	call clear_screen
-
-	mov DX, 3C4h 		; указатель на адресsный регистр
- 	mov AL, 2 			; индекс регистра маски цвета
- 	out DX, AL 			; устанавливаем адрес регистра маски
- 	inc DX 				; адрес регистра данных
- 	mov AL, 0Fh 		; код цвета (серый)
- 	out DX, AL 			; посылаем код цвета в контроллер
-
- 	mov DX, 3CEh
-	mov AL, 8
- 	out DX, AL
- 	inc DX
- 	mov AL, 0FFh
- 	out DX, AL 			; set bit mask
-
-	mov EAX, 50
-	push EAX
-
-	mov EAX, 200
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	mov EAX, 200
-	push EAX
-
-	call draw_kx_line
-
-	mov EAX, 80
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	mov EAX, 180
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	call draw_kx_line
-
-	mov EAX, 80
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	mov EAX, 50
-	push EAX
-
-	mov EAX, 200
-	push EAX
-
-	call draw_kx_line
-
-	mov EAX, 180
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	mov EAX, 150
-	push EAX
-
-	mov EAX, 200
-	push EAX
-
-	call draw_kx_line
-
-
-	mov DX, 3C4h 		; указатель на адресный регистр
- 	mov AL, 2 			; индекс регистра маски цвета
- 	out DX, AL 			; устанавливаем адрес регистра маски
- 	inc DX 				; адрес регистра данных
- 	mov AL, 03h 		; код цвета (синий)
- 	out DX, AL 			; посылаем код цвета в контроллер
-
- 	mov EAX, 76
- 	push EAX
-
- 	mov EAX, 158
- 	push EAX
-
- 	mov EAX, 99
- 	push EAX
- 	call draw_horizontal_line
-
-	mov EAX, 77
-	push EAX
-
-	mov EAX, 157
-	push EAX
-
-	call paint2
-
-	xor AX, AX			; 00 - wait until next button press
-	int 16h				; interupt 16h
-	
-	jmp _good_end
-
-_mode_8:
 
 	mov DX, 3C4h 		; указатель на адресsный регистр
  	mov AL, 2 			; индекс регистра маски цвета
