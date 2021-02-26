@@ -229,6 +229,7 @@ static void __exit lab1_exit(void)
  
 	proc_remove(entry);
 	printk(KERN_INFO "%s: proc file is deleted\n", THIS_MODULE->name);
+	printk(KERN_INFO "%s: deinitialization completed\n", THIS_MODULE->name);
 }
  
 module_init(lab1_init);
